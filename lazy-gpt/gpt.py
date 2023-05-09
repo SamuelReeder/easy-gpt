@@ -8,9 +8,22 @@ from typing import Any
 
 
 class Model(Enum):
-    GPT_4 = ("gpt-4", 0.03, 0.06)
-    GPT_4_32K = ("gpt-4-32k", 0.06, 0.12)
-    GPT_3_5 = ("gpt-3.5-turbo", 0.002, 0.002)
+    """
+    This Enum class represents the available GPT models that can be used.
+
+    Each model is represented by a tuple that contains the model's identifier string 
+    and two rate values. The first rate value corresponds to the cost per 1000 tokens 
+    for prompts, and the second rate value corresponds to the cost per 1000 tokens 
+    for completions.
+
+    Available models:
+        GPT4: Represents the GPT-4 model with identifier "gpt-4"
+        GPT4_32K: Represents the GPT-4 model with 32k token support, identifier "gpt-4-32k"
+        GPT3_5: Represents the GPT-3.5 model with identifier "gpt-3.5-turbo"
+    """
+    GPT4 = ("gpt-4", 0.03, 0.06)
+    GPT4_32K = ("gpt-4-32k", 0.06, 0.12)
+    GPT3_5 = ("gpt-3.5-turbo", 0.002, 0.002)
 
 
 class LazyGPT():
