@@ -1,5 +1,5 @@
 """
-EasyGPT class file.
+LazyGPT class file.
 """
 import openai
 import helpers
@@ -10,10 +10,10 @@ from typing import Any
 class Model(Enum):
     GPT_4 = ("gpt-4", 0.03, 0.06)
     GPT_4_32K = ("gpt-4-32k", 0.06, 0.12)
-    GPT_3 = ("gpt-3.5-turbo", 0.002, 0.002)
+    GPT_3_5 = ("gpt-3.5-turbo", 0.002, 0.002)
 
 
-class EasyGPT():
+class LazyGPT():
     """
     A class that can create and manage a single context-driven instance of a GPT model.
     """

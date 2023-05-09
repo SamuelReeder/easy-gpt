@@ -1,6 +1,6 @@
 __all__ = [
     "Model",
-    "EasyGPT",
+    "LazyGPT",
     "config",
     "compile_messages",
 ]
