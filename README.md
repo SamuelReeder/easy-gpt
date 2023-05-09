@@ -7,6 +7,8 @@ A Python package that simplifies the usage of the GPT API by providing a conveni
 First, make sure you have run the `config` function to set up your API key and optionally the organization. If you don't have environment variables set up for the key, you need to run this function.
 
 ```python
+import lazygpt 
+
 lazygpt.config("your_api_key", "your_organization")
 ```
 
