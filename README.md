@@ -1,6 +1,6 @@
-# lazy-gpt
+# lazygpt
 
-A Python package that simplifies the usage of the GPT API by providing a convenient class to manage context-driven instances of GPT models. With lazy-gpt, you can create instances, change models, and obtain context-driven responses from the GPT model.
+A Python package that simplifies the usage of the GPT API by providing a convenient class to manage context-driven instances of GPT models. With lazygpt, you can create instances, change models, and obtain context-driven responses from the GPT model.
 
 ## Usage
 

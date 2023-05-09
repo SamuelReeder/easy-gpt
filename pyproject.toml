@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lazy-gpt"
-version = "0.0.2"
+name = "lazygpt"
+version = "0.0.3"
 authors = [
   { name="Samuel Reeder", email="samuel.reeder@mail.utoronto.ca" },
 ]
@@ -23,5 +23,5 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/SamuelReeder/easy-gpt"
-"Bug Tracker" = "https://github.com/SamuelReeder/easy-gpt/issues"
+"Homepage" = "https://github.com/SamuelReeder/lazygpt"
+"Bug Tracker" = "https://github.com/SamuelReeder/lazygpt/issues"

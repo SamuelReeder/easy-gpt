@@ -32,6 +32,7 @@ class LazyGPT():
     """
     _model: str
     _system: str
+    _cost: float
     messages: list[list]
     cost: str
     prompt_tokens: int
@@ -43,6 +44,7 @@ class LazyGPT():
         """
         self.change_model(model)
         self._system = system
+        self._cost = 0.0 
         self.messages = []
         self.cost = str
         self.prompt_tokens = 0
@@ -62,11 +64,13 @@ class LazyGPT():
         if response is None:
             raise Exception(
                 "The ChatCompletions request was not successfully made.")
-        self.prompt_tokens += response["usage"]["prompt_tokens"]
-        self.completion_tokens += response["usage"]["completion_tokens"]
-        cost = (self.prompt_tokens / 1000) * \
-            self._rate[0] + (self.completion_tokens / 1000) * self._rate[1]
-        self.cost = f"${cost:.2f}"
+        p = response["usage"]["prompt_tokens"]
+        c = response["usage"]["completion_tokens"]
+        self.prompt_tokens += p
+        self.completion_tokens += c
+        self._cost += (p / 1000) * \
+            self._rate[0] + (c / 1000) * self._rate[1]
+        self.cost = f"${self._cost:.2f}"
         reply = response["choices"][0]["message"]["content"]
         self.messages[-1][1] = reply
 
