@@ -1,21 +1,21 @@
-# lazygpt
+# nicegpt
 
-A Python package that simplifies the usage of the GPT API by providing a convenient class to manage context-driven instances of GPT models. With lazygpt, you can create instances, change models, and obtain context-driven responses from the GPT model.
+A Python package that simplifies the usage of the GPT API by providing a convenient class to manage context-driven instances of GPT models. With nicegpt, you can create instances, change models, and obtain context-driven responses from the GPT model.
 
 ## Usage
 
 First, make sure you have run the `config` function to set up your API key and optionally the organization. If you don't have environment variables set up for the key, you need to run this function.
 
 ```python
-import lazygpt 
+import nicegpt 
 
-lazygpt.config("your_api_key", "your_organization")
+nicegpt.config("your_api_key", "your_organization")
 ```
 
-Next, create a GPT instance using the LazyGPT class. You can choose the GPT model by accessing the Model enum:
+Next, create a GPT instance using the GPT class. You can choose the GPT model by accessing the Model enum:
 
 ```python
-gpt_instance = lazygpt.EasyGPT(model=lazygpt.Model.GPT4)
+gpt_instance = nicegpt.GPT(model=nicegpt.Model.GPT4)
 ```
 
 Now you can obtain context-driven responses using the response function:
@@ -33,7 +33,7 @@ json_response = gpt_instance.response("What is the capital of France?", just_rep
 To change the GPT model, use the change_model function:
 
 ```python
-gpt_instance.change_model(lazygpt.Model.GPT3_5)
+gpt_instance.change_model(nicegpt.Model.GPT3_5)
 ```
 
 To access the message history, use the get_messages function:
