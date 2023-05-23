@@ -2,9 +2,30 @@
 GPT class file.
 """
 import openai
-import helpers
 from enum import Enum
 from typing import Any
+
+
+def config(key: str, organization: str = None) -> None:
+    """
+    Provide a valid OpenAI Api Key to provide to the openai package
+    """
+    openai.api_key = key
+    if organization is not None:
+        openai.organization = organization
+
+
+def compile_messages(messages: list[list[str, str | str, None]], system: str = None, ) -> list[dict]:
+    """
+    Compile a list of message dictionaries given a list of lists [user_prompt, gpt_response], and an optional system message.    
+    """
+    formatted_messages = messages.copy()
+    formatted_messages = [] if not system else [{"role": "system", "content": system}]
+    for exchange in messages:
+        formatted_messages.append({"role": "user", "content": exchange[0]})
+        if exchange[1] is not None:
+            formatted_messages.append({"role": "assistant", "content": exchange[1]})
+    return formatted_messages
 
 
 class Model(Enum):
@@ -38,7 +59,7 @@ class GPT():
     prompt_tokens: int
     completion_tokens: int
 
-    def __init__(self, model: Model = Model.GPT_3, system: str = None) -> None:
+    def __init__(self, model: Model = Model.GPT3_5, system: str = None) -> None:
         """
         Initiates an instance of a GPT model. Provide the GPT model you would like to use by accessing the <gpt.Model> enum and optionally provide a system prompt.
         """
@@ -55,7 +76,7 @@ class GPT():
         Obtain a context-driven response from GPT given the specified prompt.
         """
         self.messages.append([prompt, None])
-        messages = helpers.compile_messages(self.messages, self._system)
+        messages = compile_messages(self.messages, self._system)
         response = openai.ChatCompletion.create(
             model=self._model,
             messages=messages,
@@ -98,12 +119,3 @@ class GPT():
             messages.extend([user_message, gpt_message])
 
         return messages
-
-
-def config(key: str, organization: str = None) -> None:
-    """
-    Provide a valid OpenAI Api Key to provide to the openai package
-    """
-    openai.api_key = key
-    if organization is not None:
-        openai.organization = organization
